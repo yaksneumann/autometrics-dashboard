@@ -1,0 +1,27 @@
+article {
+    border-radius: 4px;
+    background-color: #061548;
+    color: #ded8e6;
+    padding: 15px;
+    width: max-content;
+  }
+  
+  h3 {
+    color: #3360FF;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  
+  h3 div {
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+  }
+  
+  .content {
+    text-align: center;
+    color: #3360FF;
+  }

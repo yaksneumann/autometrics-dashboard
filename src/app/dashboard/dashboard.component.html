@@ -1,0 +1,50 @@
+<div class="date-range-picker">
+  <h2>Select A Date Range</h2>
+
+  <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden"
+    [startDate]="fromDate" [minDate]="minDate" [maxDate]="maxDate" [firstDayOfWeek]="0">
+  </ngb-datepicker>
+
+  <ng-template #t let-date let-focused="focused">
+    <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+      [class.faded]="isHovered(date) || isInside(date)" [class.disabled]="isDisabled(date)">
+      {{ date.day }}
+    </span>
+  </ng-template>
+</div>
+
+<div class="card-summary">
+  <ul>
+    <li>
+      <app-cards title="Total Impressions" [content]="metricsSummary().totalImpressions" />
+    </li>
+
+    <li>
+      <app-cards title="Total Clicks" [content]="metricsSummary().totalClicks" />
+    </li>
+
+    <li>
+      <app-cards title="Total Conversions" [content]="metricsSummary().totalConversions" />
+    </li>
+
+    <li>
+      <app-cards title="Total Cost" [content]="metricsSummary().totalCost" />
+    </li>
+  </ul>
+</div>
+
+<div class="charts">
+  <ul>
+    <li>
+      <app-chart [chartData]="cvrChart" chartType="line"/>
+    </li>
+
+    <li>
+      <app-chart [chartData]="cpcChart" chartType="bar"/>
+    </li>
+
+    <li>
+      <app-chart [chartData]="ctrChart" chartType="line"/>
+    </li>
+  </ul>
+</div>

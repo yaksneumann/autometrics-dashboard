@@ -1,0 +1,41 @@
+.date-range-picker {
+    text-align: center;
+}
+
+ngb-datepicker {
+    background: #e5ebff ;
+}
+
+h2 {
+    color: #061548;
+}
+
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+
+.custom-day.focused {
+    background-color: #ffffff;
+}
+
+.custom-day.range,
+.custom-day:hover:not(.disabled) {
+    background-color: #061548   ;
+    color: white;
+}
+
+.custom-day.faded {
+    background-color: #FF8C4B;
+}
+
+.custom-day.disabled {
+    color: #999;
+}
+
+.card-summary {
+    padding: 5%;
+}
