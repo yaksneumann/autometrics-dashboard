@@ -24,51 +24,30 @@ export class DashboardComponent {
   maxDate: NgbDate;
   chartLabels: string[] = [];
 
-  cvrChart = {
-    labels: this.chartLabels,
-    datasets: [
-      {
-        label: 'Conversion Rate (%) CVR',
-        data: [] as number[],
-        backgroundColor: '#3360FF',
-        borderColor: '#061548',
-        borderWidth: 2,
-      },
-    ],
-  };
-
-  ctrChart = {
-    labels: this.chartLabels,
-    datasets: [
-      {
-        label: 'Click-Through Rate (%) CTR',
-        data: [] as number[],
-        backgroundColor: '#3360FF',
-        borderColor: '#061548',
-        borderWidth: 2,
-      },
-    ],
-  };
-
-  cpcChart = {
-    labels: this.chartLabels,
-    datasets: [
-      {
-        label: 'Cost Per Click CPC',
-        data: [] as number[],
-        backgroundColor: '#3360FF',
-        borderColor: '#061548',
-        borderWidth: 2,
-      },
-    ],
-  };
+  cvrChart = this.createChart('Conversion Rate (%) CVR');
+  ctrChart = this.createChart('Click-Through Rate (%) CTR');
+  cpcChart = this.createChart('Cost Per Click CPC', '#FF8C4B');
 
   constructor() {
     const { fromDate, toDate } = this.getDatesFromData();
     this.fromDate = this.minDate = fromDate;
     this.toDate = this.maxDate = toDate;
-    
     this.updateChart();
+  }
+
+  createChart(label: string, backgroundColor = '#3360FF') {
+    return {
+      labels: this.chartLabels,
+      datasets: [
+        {
+          label,
+          data: [] as number[],
+          backgroundColor,
+          borderColor: '#061548',
+          borderWidth: 2,
+        },
+      ],
+    };
   }
 
   getDatesFromData(): { fromDate: NgbDate, toDate: NgbDate } {
@@ -138,31 +117,21 @@ export class DashboardComponent {
 
   updateChart() {
     this.chartLabels = [];
-
     const clicks: number[] = [];
     const conversions: number[] = [];
     const cost: number[] = [];
     const impressions: number[] = [];
 
-    this.filterdMetrics()?.map((item) => {
-      const date = new Date(item.timestamp);
-      const shortDate = date.toLocaleString('en-US', {
-        month: 'long',
-        day: 'numeric'
-      });
-
-      this.chartLabels.push(shortDate);
-      clicks.push(item.clicks);
-      conversions.push(item.conversions);
-      cost.push(item.cost);
-      impressions.push(item.impressions);
+    this.filterdMetrics().forEach(({ timestamp, clicks: c, conversions: conv, cost: cos, impressions: imp }) => {
+      const date = new Date(timestamp).toLocaleString('en-US', { month: 'long', day: 'numeric' });
+      this.chartLabels.push(date);
+      clicks.push(c);
+      conversions.push(conv);
+      cost.push(cos);
+      impressions.push(imp);
     });
-
-    const metrics = this.calculateMetrics(
-      clicks,
-      impressions,
-      conversions
-    );
+  
+    const metrics = this.calculateMetrics(clicks, impressions, conversions);
 
     this.cvrChart = {
       labels: this.chartLabels,
