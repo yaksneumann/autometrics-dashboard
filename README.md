@@ -25,3 +25,28 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+This Angular-based web application provides a dashboard for visualizing key metrics related to campaign performance over a selected date range. Users can select specific dates via an interactive calendar to view metrics such as impressions, clicks, conversions, and costs for targeted analysis.
+
+Features
+
+Date Range Selection: Easily choose a date range using the calendar component to filter campaign data and track performance across specific time periods.
+
+Data Metrics Display: View essential metrics including:
+
+Impressions: The number of times ads are displayed.
+
+Clicks: The number of times ads are clicked.
+
+Conversions: The number of successful conversions.
+
+Cost: Total expenditure over the selected period.
+
+Interactive Charts:
+
+Conversion Rate (CVR) - Displays conversion efficiency for selected dates.
+
+Cost Per Click (CPC) - Visualizes the average cost for each click during the period.
+
+Click-Through Rate (CTR) - Shows the ratio of clicks to impressions, representing ad engagement.
+

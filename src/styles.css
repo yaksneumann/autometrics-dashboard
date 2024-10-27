@@ -4,11 +4,6 @@ body {
   
 }
 
-#dashboard {
-  max-width: 50%;
-  margin: 0 auto;
-}
-
 ul {
   display: flex;
   gap: 2rem;

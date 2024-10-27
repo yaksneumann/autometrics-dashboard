@@ -177,11 +177,7 @@ export class DashboardComponent {
     return sum1.map((cost, index) => cost / clicks[index]);
   }
 
-  calculateMetrics(
-    clicks: number[],
-    impressions: number[],
-    conversions: number[]
-  ): { ctr: number[]; cvr: number[] } {
+  calculateMetrics(clicks: number[], impressions: number[], conversions: number[]): { ctr: number[]; cvr: number[] } {
     const ctr = clicks.map(
       (click, index) => (click / impressions[index]) * 100
     );
